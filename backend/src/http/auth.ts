@@ -4,9 +4,120 @@ import jwt from "jsonwebtoken";
 import { createUser, findUserByName } from "../db/user";
 import { prisma } from "..";
 
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: User authentication
+ *
+ * components:
+ *   schemas:
+ *     UserCredentials:
+ *       type: object
+ *       required:
+ *         - username
+ *         - password
+ *       properties:
+ *         username:
+ *           type: string
+ *           example: "testuser"
+ *         password:
+ *           type: string
+ *           example: "SecurePass123"
+ *     AuthSuccessResponse:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ *           example: "Success"
+ *         token:
+ *           type: string
+ *           example: "eyJhbGciOiJIUzI1NiIsInR..."
+ *     ServerErrorResponse:
+ *       type: object
+ *       properties:
+ *         message:
+ *           type: string
+ *           example: "Server error"
+ *
+ *   responses:
+ *     AuthSuccess:
+ *       description: Login successful
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/AuthSuccessResponse"
+ *     ServerError:
+ *       description: Server error
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/ServerErrorResponse"
+ */
 const authRouter = Router();
+
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Login an existing user
+ *     tags: [Auth]
+ *     security: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UserCredentials"
+ *     responses:
+ *       200:
+ *         $ref: "#/components/responses/AuthSuccess"
+ *       400:
+ *         description: Authentication error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Invalid credentials"
+ *       500:
+ *         $ref: "#/components/responses/ServerError"
+ */
 authRouter.post("/login", loginUser);
+
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Auth]
+ *     security: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/UserCredentials"
+ *     responses:
+ *       200:
+ *         $ref: "#/components/responses/AuthSuccess"
+ *       400:
+ *         description: Authentication error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "User with username already exists"
+ *       500:
+ *         $ref: "#/components/responses/ServerError"
+ */
 authRouter.post("/register", registerUser);
+
 export default authRouter;
 
 async function registerUser(req: Request, res: Response) {
@@ -23,10 +134,10 @@ async function registerUser(req: Request, res: Response) {
     const newUser = await createUser(username, password);
 
     const token = generateToken(newUser.id);
-    res.status(201).json({ message: "User registered successfully", token });
+    res.status(201).json({ message: "Success", token });
   } catch (error) {
     console.error("Error during register: \n", error);
-    res.status(500).json({ message: "Error registering user" });
+    res.status(500).json({ message: "Server error" });
   }
 }
 
@@ -51,9 +162,9 @@ async function loginUser(req: Request, res: Response) {
 
     // Generate JWT token
     const token = generateToken(user.id);
-    res.json({ message: "Login successful", token });
+    res.json({ message: "Success", token });
   } catch (error) {
-    res.status(500).json({ message: "Error logging in" });
+    res.status(500).json({ message: "Server error" });
     console.error("Error during login: \n", error);
   }
 }

@@ -11,6 +11,9 @@ import {
 } from "../../types";
 import * as msgpack from "@msgpack/msgpack";
 import logRouter from "./http/log";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+import path from "path";
 
 export const prisma = new PrismaClient();
 
@@ -45,6 +48,35 @@ socketServer.on("connection", (newClient) => {
 });
 
 const httpServer = express();
+
+const options: swaggerJSDoc.Options = {
+  definition: {
+    openapi: "3.1.0",
+    info: {
+      title: "SafeChat API Docs",
+      version: "0.1.0",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [{ bearerAuth: [] }],
+  },
+  apis: [path.join(__dirname, "http/**/*.ts")],
+};
+
+const specs = swaggerJSDoc(options);
+httpServer.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, { explorer: true })
+);
+
 httpServer.use(bodyParser.json());
 httpServer.use("/auth", authRouter);
 
