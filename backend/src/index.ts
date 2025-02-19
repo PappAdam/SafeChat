@@ -11,7 +11,6 @@ import {
 } from "../../types";
 import * as msgpack from "@msgpack/msgpack";
 import logRouter from "./http/log";
-import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import path from "path";
 import YAML from "yamljs";
@@ -50,13 +49,8 @@ socketServer.on("connection", (newClient) => {
 
 const httpServer = express();
 
-const swaggerDocument = YAML.load(path.join(__dirname, "../docs/index.yml"));
-
-httpServer.use(
-  "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerDocument, { explorer: true })
-);
+const swaggerDocument = YAML.load(path.join(__dirname, "./http/_doc.yml"));
+httpServer.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 httpServer.use(bodyParser.json());
 httpServer.use("/auth", authRouter);
