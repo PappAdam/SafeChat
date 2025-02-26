@@ -1,12 +1,4 @@
-// Color Variables
-$background-color: rgba(89, 89, 89, 1);
-$text-primary: #ffffff;
-$text-secondary: rgba(226, 226, 224, 0.7);
-$text-tertiary: rgba(226, 226, 224, 0.8);
-$badge-bg: rgb(255, 0, 0);
-
-$g-gap: 8px;
-$g-rounding: 16px;
+@use "global" as *;
 
 * {
   margin: 0;
@@ -21,7 +13,7 @@ $g-rounding: 16px;
   width: 100%;
   height: fit-content;
   display: flex;
-  gap: 8px;
+  gap: $g-gap;
   padding: 8px;
 
   .image-wrapper {

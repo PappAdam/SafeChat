@@ -53,6 +53,17 @@ html {
 @import "@ionic/angular/css/palettes/dark.system.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+//custom stuff from uss
+$background-color: rgba(89, 89, 89, 1);
+$text-primary: #ffffff;
+$text-secondary: rgba(226, 226, 224, 0.7);
+$text-tertiary: rgba(226, 226, 224, 0.8);
+$badge-bg: rgb(255, 0, 0);
+
+$g-gap: 8px;
+$g-rounding: 16px;
+// end of custom stuff
+
 * {
   margin: 0px;
   padding: 0px;
