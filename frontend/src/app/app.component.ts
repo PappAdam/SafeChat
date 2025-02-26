@@ -1,20 +1,10 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
-import { BrowserComponent } from './components/pages/browser/browser.component';
-import { ChatComponent } from './components/pages/chat/chat.component';
-import { SettingsComponent } from './components/pages/settings/settings.component';
-
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrl: 'app.component.scss',
-  imports: [
-    IonApp,
-    IonRouterOutlet,
-    ChatComponent,
-    BrowserComponent,
-    SettingsComponent,
-  ],
+  imports: [RouterOutlet],
 })
 export class AppComponent {
   constructor() {}
