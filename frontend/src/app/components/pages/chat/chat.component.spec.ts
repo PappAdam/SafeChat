@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { ChatComponent } from './chat.component';
 
 describe('ChatComponent', () => {
@@ -9,8 +8,8 @@ describe('ChatComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatComponent ],
-      imports: [IonicModule.forRoot()]
+      declarations: [ChatComponent],
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChatComponent);
