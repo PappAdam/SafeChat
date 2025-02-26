@@ -14,9 +14,6 @@
 
 .nav-wrapper {
   background-color: honeydew;
-  height: 60px;
-}
-
-ion-tabs {
-  position: relative;
+  height: 50px;
+  flex-shrink: 0;
 }

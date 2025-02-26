@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-I;
-import { BrowserComponent } from './browser.component';
 
-describe('BrowserComponent', () => {
-  let component: BrowserComponent;
-  let fixture: ComponentFixture<BrowserComponent>;
+import { ChatHeaderComponent } from './chat-header.component';
+
+describe('ChatHeaderComponent', () => {
+  let component: ChatHeaderComponent;
+  let fixture: ComponentFixture<ChatHeaderComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [BrowserComponent],
-      imports: [IonicModule.forRoot()],
+      declarations: [ ChatHeaderComponent ],
+      imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BrowserComponent);
+    fixture = TestBed.createComponent(ChatHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -2,15 +2,16 @@
   display: flex;
   gap: 8px;
   width: 100%;
-  height: 60px;
+  height: 50px;
 
   input {
     width: 100%;
+    border: none;
   }
 }
 
-.text .voice .galler {
+button {
   aspect-ratio: 1 / 1;
-  width: 60px;
+  width: 50px;
   flex-shrink: 0;
 }
