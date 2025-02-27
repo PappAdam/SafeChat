@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ChatBubbleComponent } from './chat-bubble.component';
+import { MessageComponent } from './message.component';
 
-describe('ChatBubbleComponent', () => {
-  let component: ChatBubbleComponent;
-  let fixture: ComponentFixture<ChatBubbleComponent>;
+describe('MessageComponent', () => {
+  let component: MessageComponent;
+  let fixture: ComponentFixture<MessageComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatBubbleComponent ],
+      declarations: [ MessageComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ChatBubbleComponent);
+    fixture = TestBed.createComponent(MessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

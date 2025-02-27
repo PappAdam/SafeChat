@@ -1,0 +1,82 @@
+@use "global" as *;
+
+.message-wrapper:not([data-sender=""]) {
+  flex-direction: row-reverse;
+}
+
+.message-wrapper[data-first="true"] {
+  padding: $g-gap $g-gap 0 $g-gap;
+}
+
+.message-wrapper {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  gap: calc($g-gap / 2);
+  padding: calc($g-gap / 4) $g-gap 0 $g-gap;
+  background-color: $badge-bg;
+
+  .message-bubble-wrapper:not([data-sender=""]) {
+    display: flex;
+    flex-direction: column;
+  }
+  .message-bubble-wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+
+    .profile-name-wrapper {
+      padding-left: $g-gap;
+      visibility: hidden;
+      font-size: $h-1;
+      height: 0px;
+
+      .profile-name-wrapper[data-first="true"]:not([data-sender=""]) {
+        visibility: visible;
+        height: $h-1;
+      }
+    }
+    .profile-name-wrapper[data-first="true"] {
+      visibility: visible;
+      height: fit-content;
+    }
+
+    .message-bubble {
+      background-color: $background-color;
+      border-radius: $g-rounding;
+      padding: $g-gap calc($g-gap * 1.5);
+      max-width: 580px;
+      min-height: 30px;
+      font-size: $p;
+      height: fit-content;
+      flex-shrink: 1;
+      .message {
+        word-wrap: wrap;
+      }
+    }
+  }
+
+  .message-profile-wrapper {
+    lex-shrink: 0;
+    margin-top: calc($h-1 + 2px);
+    align-self: flex-start;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .profile-image {
+      visibility: hidden;
+      border-radius: 100%;
+      background-color: cadetblue;
+      height: 0;
+      width: 30px;
+    }
+
+    .profile-image[data-first="true"] {
+      visibility: visible;
+      width: 30px;
+      height: 30px;
+    }
+  }
+}

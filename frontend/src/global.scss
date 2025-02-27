@@ -14,16 +14,7 @@ html {
       density: 0,
     )
   );
-} /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+}
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -54,6 +45,12 @@ html {
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 //custom stuff from uss
+$h1: 30px;
+$h2: 20px;
+$h3: 10px;
+$h-1: 10px;
+$p: 12px;
+
 $background-color: rgba(89, 89, 89, 1);
 $text-primary: #ffffff;
 $text-secondary: rgba(226, 226, 224, 0.7);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatComponent } from '../pages/chat/chat.component';
-import { BrowserComponent } from '../pages/browser/browser.component';
-import { SettingsComponent } from '../pages/settings/settings.component';
+import { ChatComponent } from '../chat/chat.component';
+import { BrowserComponent } from '../browser/browser.component';
+import { SettingsComponent } from '../settings/settings.component';
 
 @Component({
   selector: 'app-desktop',
