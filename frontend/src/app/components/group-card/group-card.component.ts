@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-group-card',
@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupCardComponent implements OnInit {
   constructor() {}
+  @Input() unread: string = '0';
+  @Input({ required: true }) name: string = '';
+  @Input({ required: true }) last_msg: string = '';
+  @Input() status: string = '';
 
   ngOnInit() {}
 }

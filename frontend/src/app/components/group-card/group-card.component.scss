@@ -56,6 +56,7 @@
       justify-content: end;
       font-size: $p;
       height: 15px;
+      visibility: hidden;
 
       .status {
         display: flex;
@@ -68,11 +69,17 @@
       }
     }
 
+    .status-wrapper:not([data-status=""]) {
+      visibility: visible;
+    }
+
     .unread-wrapper {
       height: 15px;
       display: flex;
       align-items: center;
       justify-content: end;
+      visibility: hidden;
+
       .unread {
         display: flex;
         justify-content: center;
@@ -84,6 +91,10 @@
         padding: $g-gap;
         aspect-ratio: 1/1;
       }
+    }
+
+    .unread-wrapper:not([data-unread="0"]) {
+      visibility: visible;
     }
   }
 }
